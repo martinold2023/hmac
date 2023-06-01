@@ -1,4 +1,4 @@
-import Hmac "src/Hmac";
+import Hmac "Hmac";
 
 let hmacSha256 : Hmac.Hmac = Hmac.sha256(key);
 hmacSha256.write([ /* Nat8 data */ ]);
