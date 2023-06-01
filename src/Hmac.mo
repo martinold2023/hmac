@@ -1,6 +1,6 @@
 import Array "mo:base/Array";
-import SHA256Digest "../motoko-sha/src/SHA256";
-import SHA512Digest "../motoko-sha/src/SHA512";
+import SHA256Digest "SHA256";
+
 
 module {
   public type Digest = {
@@ -25,12 +25,6 @@ module {
   };
   public func sha256(key: [Nat8]) : Hmac = HmacImpl(key, sha256DigestFactory);
 
-  // Sha512 support.
-  object sha512DigestFactory {
-    public let blockSize : Nat = 128;
-    public func create () : Digest = SHA512Digest.Digest();
-  };
-  public func sha512(key: [Nat8]) : Hmac = HmacImpl(key, sha512DigestFactory);
 
   // Construct HMAC from an arbitrary digest function.
   public func new(key : [Nat8], digestFactory : DigestFactory) : Hmac {
